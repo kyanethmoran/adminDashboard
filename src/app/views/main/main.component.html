@@ -1,8 +1,9 @@
 <app-header></app-header>
-<app-sidenav></app-sidenav>
 
 <mat-drawer-container>
-  <mat-drawer mode="side" opened></mat-drawer>
+  <mat-drawer mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
   <mat-drawer-content>
     <router-outlet></router-outlet>
   </mat-drawer-content>
