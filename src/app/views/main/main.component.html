@@ -1,7 +1,7 @@
-<app-header></app-header>
+<app-header (toggleSideNavEvent)="sideNavToggle($event)"></app-header>
 
 <mat-drawer-container>
-  <mat-drawer mode="side" opened>
+  <mat-drawer mode="side" [opened]="sideNavOpen">
     <app-sidenav></app-sidenav>
   </mat-drawer>
   <mat-drawer-content>
