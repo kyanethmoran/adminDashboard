@@ -11,6 +11,6 @@ export class HeaderComponent {
   constructor() {}
 
   toggleSideNav() {
-    this.toggleSideNav.emit();
+    this.toggleSideNavEvent.emit();
   }
 }
