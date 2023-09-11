@@ -12,9 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SidenavComponent, FooterComponent],
+  declarations: [HeaderComponent, SidenavComponent, FooterComponent, BarChartComponent],
   imports: [
     CommonModule,
     MatDividerModule,
