@@ -7,20 +7,17 @@ import { StoreService } from 'src/app/services/store.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  storeData: any;
+  employeeData: any;
 
-  constructor(public getStoreInfo: StoreService) {}
+  constructor(public employees: StoreService) {}
 
   ngOnInit(): void {
-    this.storeInfo();
+    this.getEmployeeData();
   }
 
-  storeInfo() {
-    this.getStoreInfo.getStoreInfo('Georgia').subscribe((data) => {
-      this.storeData = data;
-      console.log('inside', this.storeData);
+  getEmployeeData() {
+    this.employees.getStoreEmployeeInfo('Georgia').subscribe((data: any) => {
+      this.employeeData = data;
     });
-
-    console.log(this.storeData);
   }
 }

@@ -1,4 +1,4 @@
-<div>line chart</div>
+<app-bar-chart></app-bar-chart>
 
 <mat-divider></mat-divider>
 
@@ -11,7 +11,7 @@
 
 <mat-divider></mat-divider>
 
-<div>
-  <div>table</div>
+<div *ngIf="employeeData">
+  <app-table [employeeData]="employeeData"></app-table>
   <div>pie chart</div>
 </div>

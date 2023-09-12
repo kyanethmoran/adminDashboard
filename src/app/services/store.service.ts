@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +11,8 @@ export class StoreService {
 
   constructor(public http: HttpClient) {}
 
-  getStoreInfo(state: any): Observable<any> {
-    const url = `${this.storeInfoUrl}${state}${this.jsonEXT}`;
+  getStoreEmployeeInfo(state: any): any {
+    const url = `${this.storeInfoUrl}${state}/employees${this.jsonEXT}`;
     return this.http.get<any>(url);
   }
 }
