@@ -12,14 +12,7 @@ export class DashboardComponent implements OnInit {
 
   employeeTableTitle: string = 'Employees';
   employeeData: any;
-  employeeColumns: string[] = [
-    'name',
-    'position',
-    'phone',
-    'email',
-    'edit',
-    'delete',
-  ];
+  employeeColumns: string[] = ['name', 'position', 'phone', 'email'];
 
   constructor(public employees: StoreService) {}
 

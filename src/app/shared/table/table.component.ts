@@ -10,8 +10,18 @@ export class TableComponent implements OnInit {
   @Input() tableData: any;
   @Input() tableColumns: any;
   @Input() tableTitle: any;
+  @Input() tableActions: any;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.checkTableActions();
+  }
+
+  checkTableActions() {
+    if (this.tableActions) {
+      this.tableColumns.push('edit');
+      this.tableColumns.push('delete');
+    }
+  }
 }
