@@ -6,7 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
-import { TableComponent } from './table/table.component';
+import { TableComponent } from './components/table/table.component';
 
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
