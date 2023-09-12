@@ -11,7 +11,8 @@
 
 <mat-divider></mat-divider>
 
-<div>
-  <app-table [employeeData]="employeeData"></app-table>
-  <div>pie chart</div>
-</div>
+<app-table
+  *ngIf="employeeData"
+  [tableData]="employeeData"
+  [tableColumns]="employeeColumns"
+></app-table>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class DashboardComponent implements OnInit {
   employeeData: any;
+  employeeColumns: string[] = ['name', 'position', 'phone', 'email'];
+  employeeSubscription: Subscription = new Subscription();
 
   constructor(public employees: StoreService) {}
 
@@ -15,9 +18,15 @@ export class DashboardComponent implements OnInit {
     this.getEmployeeData();
   }
 
+  ngOnDestroy(): void {
+    this.employeeSubscription.unsubscribe();
+  }
+
   getEmployeeData() {
-    this.employees.getStoreEmployeeInfo('Georgia').subscribe((data: any) => {
-      this.employeeData = data;
-    });
+    this.employeeSubscription = this.employees
+      .getStoreEmployeeInfo('Georgia')
+      .subscribe((data: any) => {
+        this.employeeData = data;
+      });
   }
 }
