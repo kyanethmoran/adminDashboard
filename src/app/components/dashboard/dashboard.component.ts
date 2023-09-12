@@ -9,7 +9,14 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class DashboardComponent implements OnInit {
   employeeData: any;
-  employeeColumns: string[] = ['name', 'position', 'phone', 'email'];
+  employeeColumns: string[] = [
+    'name',
+    'position',
+    'phone',
+    'email',
+    'edit',
+    'delete',
+  ];
   employeeSubscription: Subscription = new Subscription();
 
   constructor(public employees: StoreService) {}
