@@ -1,0 +1,49 @@
+<div class="table-header">
+  <h2>{{ this.tableTitle }}</h2>
+  <span class="spacer"></span>
+  <button mat-raised-button color="primary">Add Employee</button>
+</div>
+
+<table mat-table [dataSource]="tableData" class="mat-elevation-z8">
+  <!-- FirstName Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let e">{{ e.firstName }} {{ e.lastName }}</td>
+  </ng-container>
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>Position</th>
+    <td mat-cell *matCellDef="let e">{{ e.position }}</td>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let e">{{ e.email }}</td>
+  </ng-container>
+
+  <!-- Phone Column -->
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef>Phone</th>
+    <td mat-cell *matCellDef="let e">{{ e.phone }}</td>
+  </ng-container>
+
+  <!-- For Table Actions as Needed -->
+  <div *ngIf="tableActions">
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let e">edit</td>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let e">X</td>
+    </ng-container>
+  </div>
+
+  <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>
+</table>
