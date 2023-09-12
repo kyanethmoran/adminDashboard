@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 export class TableComponent implements OnInit {
   @Input() tableData: any;
   @Input() tableColumns: any;
+  @Input() tableTitle: any;
 
   constructor() {}
 

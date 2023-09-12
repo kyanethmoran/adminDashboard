@@ -8,6 +8,9 @@ import { StoreService } from 'src/app/services/store.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  employeeSubscription: Subscription = new Subscription();
+
+  employeeTableTitle: string = 'Employees';
   employeeData: any;
   employeeColumns: string[] = [
     'name',
@@ -17,7 +20,6 @@ export class DashboardComponent implements OnInit {
     'edit',
     'delete',
   ];
-  employeeSubscription: Subscription = new Subscription();
 
   constructor(public employees: StoreService) {}
 
