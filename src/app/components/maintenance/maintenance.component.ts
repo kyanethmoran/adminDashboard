@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./maintenance.component.scss'],
 })
 export class MaintenanceComponent {
-  contractorColumns: string[] = ['Name', 'Specialty', 'Phone', 'Email'];
+  contractorColumns: string[] = ['position', 'name', 'phone', 'email'];
   contractorTableTitle: string = 'Maintanence Contractors';
   contractorTableData: any;
 
