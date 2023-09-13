@@ -1,7 +1,14 @@
 <div class="table-header">
   <h2>{{ this.tableTitle }}</h2>
   <span class="spacer"></span>
-  <button mat-raised-button color="primary">Add Employee</button>
+  <button
+    *ngIf="tableActions"
+    mat-raised-button
+    color="primary"
+    (click)="openDialog('100ms', '100ms')"
+  >
+    Add Employee
+  </button>
 </div>
 
 <table mat-table [dataSource]="tableData" class="mat-elevation-z8">
