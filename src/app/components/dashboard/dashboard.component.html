@@ -11,12 +11,16 @@
 
 <mat-divider></mat-divider>
 
-<app-table
-  *ngIf="employeeData"
-  [tableData]="employeeData"
-  [tableColumns]="employeeColumns"
-  [tableTitle]="employeeTableTitle"
-  [tableActions]="true"
-></app-table>
+<section>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+
+  <app-table
+    *ngIf="!loading"
+    [tableData]="employeeData"
+    [tableColumns]="employeeColumns"
+    [tableTitle]="employeeTableTitle"
+    [tableActions]="true"
+  ></app-table>
+</section>
 
 <app-footer></app-footer>
