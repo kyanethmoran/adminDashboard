@@ -15,6 +15,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
+import {
+  MatDialog,
+  MatDialogRef,
+  MatDialogModule,
+} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -34,6 +39,7 @@ import { MatTableModule } from '@angular/material/table';
     MatListModule,
     RouterModule,
     MatTableModule,
+    MatDialogModule,
   ],
   exports: [
     HeaderComponent,
