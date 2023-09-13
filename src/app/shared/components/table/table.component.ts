@@ -34,7 +34,6 @@ export class TableComponent implements OnInit {
   checkTableActions() {
     if (this.tableActions) {
       this.tableColumns.push('edit');
-      this.tableColumns.push('delete');
     }
   }
 
