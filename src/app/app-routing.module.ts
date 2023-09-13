@@ -10,7 +10,7 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'posts', component: PostsComponent },
+      { path: 'Alerts', component: PostsComponent },
     ],
   },
 ];
