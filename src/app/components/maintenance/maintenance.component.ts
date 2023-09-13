@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class MaintenanceComponent {
   contractorColumns: string[] = ['position', 'name', 'phone', 'email'];
-  contractorTableTitle: string = 'Maintanence Contractors';
-  contractorTableData: any;
+  contractorTitle: string = 'Maintanence Contractors';
+  contractorData: any;
 
   constructor() {}
 }
