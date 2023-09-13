@@ -13,7 +13,7 @@
   <mat-spinner *ngIf="loading"></mat-spinner>
 
   <app-table
-    *ngIf="!loading"
+    *ngIf="employeeData"
     [tableData]="employeeData"
     [tableColumns]="employeeColumns"
     [tableTitle]="employeeTableTitle"
