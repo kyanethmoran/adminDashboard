@@ -31,7 +31,7 @@ export class TableComponent implements OnInit {
     exitAnimationDuration: string
   ): void {
     this.dialog.open(DialogComponent, {
-      width: '250px',
+      width: '40vw',
       enterAnimationDuration,
       exitAnimationDuration,
     });
