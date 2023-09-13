@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-table',
@@ -13,10 +15,20 @@ export class TableComponent implements OnInit {
   @Input() tableTitle: any;
   @Input() tableActions: any;
 
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  dataSource: any;
+
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
     this.checkTableActions();
+    this.tableData = new MatTableDataSource<any>(this.tableData);
+  }
+
+  ngAfterViewInit() {
+    this.tableData.paginator = this.paginator;
   }
 
   checkTableActions() {

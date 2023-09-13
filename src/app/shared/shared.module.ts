@@ -15,11 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
-import {
-  MatDialog,
-  MatDialogRef,
-  MatDialogModule,
-} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -40,6 +37,7 @@ import {
     RouterModule,
     MatTableModule,
     MatDialogModule,
+    MatPaginatorModule,
   ],
   exports: [
     HeaderComponent,
