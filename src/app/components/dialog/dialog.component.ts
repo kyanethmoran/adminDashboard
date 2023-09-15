@@ -21,13 +21,13 @@ export class DialogComponent implements OnInit {
   ) {}
 
   inputData: any;
+  closeMessage: string = 'closed using directive';
 
   ngOnInit(): void {
     this.inputData = this.data;
   }
 
   addEntry(): void {
-    console.log('added entry');
-    this.dialogRef.close();
+    this.dialogRef.close('closed using close button: this is data passed');
   }
 }

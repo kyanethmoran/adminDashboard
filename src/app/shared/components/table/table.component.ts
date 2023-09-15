@@ -41,13 +41,17 @@ export class TableComponent implements OnInit {
     enterAnimationDuration: string,
     exitAnimationDuration: string
   ): void {
-    this.dialog.open(DialogComponent, {
+    let _dialog = this.dialog.open(DialogComponent, {
       width: '40vw',
       enterAnimationDuration,
       exitAnimationDuration,
       data: {
         title: 'Add New Entry',
       },
+    });
+
+    _dialog.afterClosed().subscribe((result) => {
+      console.log(result);
     });
   }
 }
