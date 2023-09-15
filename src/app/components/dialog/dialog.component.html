@@ -1,11 +1,39 @@
 <section>
-  <h1 mat-dialog-title>{{ inputData.title }}</h1>
+  <h1 mat-dialog-title color="primary">{{ inputData.title }}</h1>
 
-  <div mat-dialog-content>
-    <mat-form-field>
-      <mat-label>First Name</mat-label>
-      <input matInput />
-    </mat-form-field>
+  <div mat-dialog-content class="input-container">
+    <div class="input-subcontainer">
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Choose Role</mat-label>
+        <mat-select>
+          <mat-option value="employee">Employee</mat-option>
+          <mat-option value="manager">Manager</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="input-subcontainer">
+      <mat-form-field>
+        <mat-label>Salary</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <span class="spacer"></span>
+      <mat-form-field>
+        <mat-label>Phone Number</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </div>
   </div>
 
   <div mat-dialog-actions>

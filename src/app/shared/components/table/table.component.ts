@@ -42,7 +42,7 @@ export class TableComponent implements OnInit {
     exitAnimationDuration: string
   ): void {
     let _dialog = this.dialog.open(DialogComponent, {
-      width: '40vw',
+      width: '50vw',
       enterAnimationDuration,
       exitAnimationDuration,
       data: {

@@ -6,6 +6,22 @@ section {
   padding: 2vh 1vw;
 }
 
+mat-form-field {
+  width: 90%;
+}
+
 .spacer {
   flex: 1 1 auto;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.input-sub-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
