@@ -45,13 +45,14 @@ export class TableComponent implements OnInit {
       width: '50vw',
       enterAnimationDuration,
       exitAnimationDuration,
+      disableClose: true,
       data: {
         title: 'Add New Entry',
       },
     });
 
     _dialog.afterClosed().subscribe((result) => {
-      console.log(result);
+      console.log('result', result);
     });
   }
 }
