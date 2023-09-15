@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
   loading: boolean = true;
   employeeSubscription: Subscription = new Subscription();
 
-  employeeColumns: string[] = ['name', 'position', 'phone', 'email'];
+  employeeColumns: string[] = ['name', 'role', 'phone', 'email'];
   employeeTableTitle: string = 'Employees';
   employeeData: any;
 
