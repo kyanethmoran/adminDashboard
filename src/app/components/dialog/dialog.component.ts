@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { Form, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
@@ -26,7 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
 export class DialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<DialogComponent>
+    public dialogRef: MatDialogRef<DialogComponent>,
+    private builder: FormBuilder
   ) {}
 
   inputData: any;
@@ -39,4 +41,13 @@ export class DialogComponent implements OnInit {
   addEntry(): void {
     this.dialogRef.close('closed using close button: this is data passed');
   }
+
+  dialogForm = this.builder.group({
+    firstName: this.builder.control(''),
+    lastName: this.builder.control(''),
+    email: this.builder.control(''),
+    phone: this.builder.control(''),
+    salary: this.builder.control(''),
+    role: this.builder.control(''),
+  });
 }
