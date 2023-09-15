@@ -11,9 +11,9 @@ export class DashboardComponent implements OnInit {
   loading: boolean = true;
   employeeSubscription: Subscription = new Subscription();
 
+  employeeColumns: string[] = ['name', 'position', 'phone', 'email'];
   employeeTableTitle: string = 'Employees';
   employeeData: any;
-  employeeColumns: string[] = ['name', 'position', 'phone', 'email'];
 
   constructor(public employees: StoreService) {}
 
