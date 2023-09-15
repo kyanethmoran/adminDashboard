@@ -45,6 +45,9 @@ export class TableComponent implements OnInit {
       width: '40vw',
       enterAnimationDuration,
       exitAnimationDuration,
+      data: {
+        title: 'Add New Entry',
+      },
     });
   }
 }

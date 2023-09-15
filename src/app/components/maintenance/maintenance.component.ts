@@ -11,7 +11,7 @@ export class MaintenanceComponent {
   loading: boolean = true;
   contractorSubscription: Subscription = new Subscription();
 
-  contractorColumns: string[] = ['position', 'name', 'phone', 'email'];
+  contractorColumns: string[] = ['name', 'position', 'phone', 'email'];
   contractorTitle: string = 'Maintanence Contractors';
   contractorData: any;
 
