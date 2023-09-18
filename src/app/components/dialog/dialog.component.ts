@@ -9,7 +9,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { Form, FormBuilder } from '@angular/forms';
+import {
+  Form,
+  FormGroup,
+  ReactiveFormsModule,
+  FormBuilder,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
@@ -22,6 +27,7 @@ import { Form, FormBuilder } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    ReactiveFormsModule,
   ],
 })
 export class DialogComponent implements OnInit {
@@ -50,4 +56,8 @@ export class DialogComponent implements OnInit {
     salary: this.builder.control(''),
     role: this.builder.control(''),
   });
+
+  saveEntry() {
+    console.log(this.dialogForm.value);
+  }
 }
