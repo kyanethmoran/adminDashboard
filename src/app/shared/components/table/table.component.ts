@@ -1,16 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from 'src/app/components/dialog/dialog.component';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -23,39 +11,17 @@ export class TableComponent implements OnInit {
   @Input() tableTitle: any;
   @Input() tableActions: any;
 
-  private paginator!: MatPaginator;
-
   dataSource: any;
 
-  constructor(public dialog: MatDialog) {}
+  constructor() {}
 
   ngOnInit() {
     this.checkTableActions();
-    this.tableData = new MatTableDataSource<any>(this.tableData);
-  }
-
-  ngAfterViewInit() {
-    this.tableData.paginator = this.paginator;
   }
 
   checkTableActions() {
     if (this.tableActions) {
       this.tableColumns.push('edit');
     }
-  }
-
-  openDialog(
-    enterAnimationDuration: string,
-    exitAnimationDuration: string
-  ): void {
-    let _dialog = this.dialog.open(DialogComponent, {
-      width: '50vw',
-      enterAnimationDuration,
-      exitAnimationDuration,
-      disableClose: true,
-      data: {
-        title: 'Add New Entry',
-      },
-    });
   }
 }
