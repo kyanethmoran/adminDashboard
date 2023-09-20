@@ -1,4 +1,4 @@
-<div class="table-header">
+<!-- <div class="table-header">
   <h2>{{ this.tableTitle }}</h2>
   <span class="spacer"></span>
   <button
@@ -9,7 +9,7 @@
   >
     Add New
   </button>
-</div>
+</div> -->
 
 <div class="mat-elevation-z6">
   <table mat-table [dataSource]="tableData">
@@ -64,14 +64,4 @@
     <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>
   </table>
-  <mat-divider></mat-divider>
-  <mat-paginator
-    [length]="tableData.length"
-    [pageSize]="5"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    showFirstLastButtons
-    aria-label="Select page of table elements"
-  >
-    >
-  </mat-paginator>
 </div>

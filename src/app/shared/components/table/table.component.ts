@@ -22,26 +22,16 @@ export class TableComponent implements OnInit {
   @Input() tableColumns: any;
   @Input() tableTitle: any;
   @Input() tableActions: any;
-  @Output('updateTable') updateTable = new EventEmitter<any>();
 
   private paginator!: MatPaginator;
-  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
-    if (mp) {
-      this.paginator = mp;
-      this.dataSource = new MatTableDataSource<any>(this.tableData);
-      this.dataSource.paginator = this.paginator;
-      this.cdr.detectChanges();
-    }
-  }
 
   dataSource: any;
 
-  constructor(public dialog: MatDialog, private cdr: ChangeDetectorRef) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
     this.checkTableActions();
     this.tableData = new MatTableDataSource<any>(this.tableData);
-    this.cdr.detectChanges();
   }
 
   ngAfterViewInit() {
@@ -66,14 +56,6 @@ export class TableComponent implements OnInit {
       data: {
         title: 'Add New Entry',
       },
-    });
-
-    _dialog.afterClosed().subscribe((result) => {
-      if (result !== 'canceled') {
-        this.updateTable.emit();
-        this.cdr.detectChanges();
-        this.tableData.paginator = this.paginator;
-      }
     });
   }
 }
