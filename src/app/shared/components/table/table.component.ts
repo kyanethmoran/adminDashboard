@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { MatPaginator } from '@angular/material/paginator';
@@ -14,17 +22,26 @@ export class TableComponent implements OnInit {
   @Input() tableColumns: any;
   @Input() tableTitle: any;
   @Input() tableActions: any;
+  @Output('updateTable') updateTable = new EventEmitter<any>();
 
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+  private paginator!: MatPaginator;
+  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
+    if (mp) {
+      this.paginator = mp;
+      this.dataSource = new MatTableDataSource<any>(this.tableData);
+      this.dataSource.paginator = this.paginator;
+      this.cdr.detectChanges();
+    }
+  }
 
   dataSource: any;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.checkTableActions();
     this.tableData = new MatTableDataSource<any>(this.tableData);
+    this.cdr.detectChanges();
   }
 
   ngAfterViewInit() {
@@ -52,7 +69,11 @@ export class TableComponent implements OnInit {
     });
 
     _dialog.afterClosed().subscribe((result) => {
-      console.log('result', result);
+      if (result !== 'canceled') {
+        this.updateTable.emit();
+        this.cdr.detectChanges();
+        this.tableData.paginator = this.paginator;
+      }
     });
   }
 }

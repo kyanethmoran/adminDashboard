@@ -26,10 +26,14 @@ export class DashboardComponent implements OnInit {
   }
 
   getEmployeeData() {
+    this.loading = true;
+
     this.employeeSubscription = this.employees
       .getStoreEmployeeInfo('Georgia')
       .subscribe((data: any) => {
-        this.employeeData = data;
+        this.employeeData = Object.keys(data).map((key) => {
+          return { ...data[key] };
+        });
       });
 
     this.loading = false;

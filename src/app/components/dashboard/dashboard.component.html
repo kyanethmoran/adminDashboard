@@ -18,5 +18,6 @@
     [tableColumns]="employeeColumns"
     [tableTitle]="employeeTableTitle"
     [tableActions]="true"
+    (updateTable)="getEmployeeData()"
   ></app-table>
 </section>

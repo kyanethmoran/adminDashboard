@@ -15,6 +15,7 @@ import {
   ReactiveFormsModule,
   FormBuilder,
 } from '@angular/forms';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-dialog',
@@ -34,11 +35,12 @@ export class DialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<DialogComponent>,
-    private builder: FormBuilder
+    private builder: FormBuilder,
+    private service: StoreService
   ) {}
 
   inputData: any;
-  closeMessage: string = 'closed using directive';
+  closeMessage: string = 'canceled';
 
   ngOnInit(): void {
     this.inputData = this.data;
@@ -58,6 +60,11 @@ export class DialogComponent implements OnInit {
   });
 
   saveEntry() {
-    console.log(this.dialogForm.value);
+    this.service
+      .saveStoreEmployeeInfo('Georgia', this.dialogForm.value)
+      .subscribe((res: any) => {
+        this.addEntry();
+        console.log('added');
+      });
   }
 }

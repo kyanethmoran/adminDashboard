@@ -12,9 +12,16 @@ export class StoreService {
 
   constructor(public http: HttpClient) {}
 
+  // get employee info
   getStoreEmployeeInfo(state: string): any {
     const url = `${this.storeInfoUrl}${state}/employees${this.jsonEXT}`;
     return this.http.get<Observable<any>>(url);
+  }
+
+  // post employee info
+  saveStoreEmployeeInfo(state: string, data: any): any {
+    const url = `${this.storeInfoUrl}${state}/employees${this.jsonEXT}`;
+    return this.http.post(url, data);
   }
 
   getStoreContractorInfo(state: string): any {
