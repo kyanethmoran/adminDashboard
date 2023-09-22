@@ -12,6 +12,32 @@
 <section>
   <mat-spinner *ngIf="loading"></mat-spinner>
 
+  <div class="table-header">
+    <h2>{{ this.employeeTableTitle }}</h2>
+    <span class="spacer"></span>
+    <button
+      *ngIf="!showEmployeeForm"
+      mat-raised-button
+      color="primary"
+      (click)="addEmployee()"
+    >
+      Add New
+    </button>
+  </div>
+
+  <div *ngIf="showEmployeeForm" class="under-spacer mat-elevation-z6">
+    <h3>Add New Employee:</h3>
+    <div class="table-header">
+      <button mat-raised-button color="primary" (click)="submit()">
+        Submit
+      </button>
+      <span class="spacer"></span>
+      <button mat-raised-button color="warn" (click)="showEmployeeForm = false">
+        cancel
+      </button>
+    </div>
+  </div>
+
   <app-table
     *ngIf="employeeData"
     [tableData]="employeeData"

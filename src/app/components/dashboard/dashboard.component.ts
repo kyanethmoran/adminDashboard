@@ -15,6 +15,8 @@ export class DashboardComponent implements OnInit {
   employeeTableTitle: string = 'Employees';
   employeeData: any;
 
+  showEmployeeForm: boolean = false;
+
   constructor(public employees: StoreService) {}
 
   ngOnInit(): void {
@@ -37,5 +39,13 @@ export class DashboardComponent implements OnInit {
       });
 
     this.loading = false;
+  }
+
+  addEmployee() {
+    this.showEmployeeForm = true;
+    console.log('Add Employee');
+  }
+  submit() {
+    console.log('Submit Employee');
   }
 }
