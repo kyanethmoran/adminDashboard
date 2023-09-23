@@ -49,7 +49,7 @@
             <mat-icon>edit</mat-icon>
           </button>
           <!-- delete button -->
-          <button mat-icon-button color="warn">
+          <button mat-icon-button color="warn" (click)="delete(e.id)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
@@ -59,9 +59,9 @@
     <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>
   </table>
-  <mat-paginator
+  <!-- <mat-paginator
     [length]="tableData.length"
     [pageSize]="3"
     aria-label="Select page of GitHub search results"
-  ></mat-paginator>
+  ></mat-paginator> -->
 </div>

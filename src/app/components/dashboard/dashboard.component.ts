@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
       .getStoreEmployeeInfo('Georgia')
       .subscribe((data: any) => {
         this.employeeData = Object.keys(data).map((key) => {
-          return { ...data[key] };
+          return { ...data[key], id: key };
         });
       });
 
@@ -44,6 +44,13 @@ export class DashboardComponent implements OnInit {
   addEmployee() {
     this.showEmployeeForm = true;
     console.log('Add Employee');
+  }
+  deleteEmployee(id: string) {
+    console.log('Delete Employee');
+    console.log('id', id);
+    this.employees.deleteStoreEmployeeInfo('Georgia', id).subscribe(() => {
+      this.getEmployeeData();
+    });
   }
   submit() {
     console.log('Submit Employee');

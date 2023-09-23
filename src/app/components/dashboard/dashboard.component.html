@@ -45,5 +45,6 @@
     [tableTitle]="employeeTableTitle"
     [tableActions]="true"
     (updateTable)="getEmployeeData()"
+    (deleteRow)="deleteEmployee($event)"
   ></app-table>
 </section>
