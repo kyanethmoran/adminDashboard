@@ -7,6 +7,8 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard.compo
 import { PostsComponent } from 'src/app/components/posts/posts.component';
 import { MaintenanceComponent } from 'src/app/components/maintenance/maintenance.component';
 
+import { SalesBarChartComponent } from 'src/app/components/charts/sales-bar-chart/sales-bar-chart.component';
+
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
@@ -19,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
     DashboardComponent,
     PostsComponent,
     MaintenanceComponent,
+    SalesBarChartComponent,
   ],
   imports: [
     CommonModule,

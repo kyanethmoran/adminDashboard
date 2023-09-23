@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { TableComponent } from './components/table/table.component';
 
 import { MatDividerModule } from '@angular/material/divider';
@@ -23,7 +22,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     HeaderComponent,
     SidenavComponent,
     FooterComponent,
-    BarChartComponent,
     TableComponent,
   ],
   imports: [
@@ -39,12 +37,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatDialogModule,
     MatPaginatorModule,
   ],
-  exports: [
-    HeaderComponent,
-    SidenavComponent,
-    FooterComponent,
-    BarChartComponent,
-    TableComponent,
-  ],
+  exports: [HeaderComponent, SidenavComponent, FooterComponent, TableComponent],
 })
 export class SharedModule {}
