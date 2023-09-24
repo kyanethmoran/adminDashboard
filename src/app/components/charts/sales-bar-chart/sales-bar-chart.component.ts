@@ -103,7 +103,7 @@ export class SalesBarChartComponent implements OnInit {
       })
       .attr('height', (d: any) => this.height - this.y(d.value))
       .append('title')
-      .attr('class', 'tooltip')
+      .attr('class', 'title tooltip')
       .text((d: any) => `${d.value} Units Sold in ${d.month}`);
   }
 }
