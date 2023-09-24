@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { SALES } from '../sales';
+import { SALES } from '../charts-data/sales';
 import * as d3 from 'd3';
 import * as d3Scale from 'd3-scale';
 import * as d3Axis from 'd3-axis';

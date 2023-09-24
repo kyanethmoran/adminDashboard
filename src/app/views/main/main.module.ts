@@ -8,6 +8,7 @@ import { PostsComponent } from 'src/app/components/posts/posts.component';
 import { MaintenanceComponent } from 'src/app/components/maintenance/maintenance.component';
 
 import { SalesBarChartComponent } from 'src/app/components/charts/sales-bar-chart/sales-bar-chart.component';
+import { ExpensePieChartComponent } from 'src/app/components/charts/expense-pie-chart/expense-pie-chart.component';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -22,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     PostsComponent,
     MaintenanceComponent,
     SalesBarChartComponent,
+    ExpensePieChartComponent,
   ],
   imports: [
     CommonModule,

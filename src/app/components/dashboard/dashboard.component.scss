@@ -5,6 +5,7 @@ mat-spinner {
   margin: 2vh 1vw;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .spacer {
   flex: 1 1 auto;
