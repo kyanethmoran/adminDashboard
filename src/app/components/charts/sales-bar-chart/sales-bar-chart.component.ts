@@ -1,10 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import * as d3 from 'd3';
 import { SALES } from '../sales';
-
-// import * as d3 from 'd3-selection';
+import * as d3 from 'd3';
 import * as d3Scale from 'd3-scale';
-import * as d3Array from 'd3-array';
 import * as d3Axis from 'd3-axis';
 
 @Component({
@@ -86,6 +83,7 @@ export class SalesBarChartComponent implements OnInit {
   }
 
   drawBars() {
+    //draw the bars with a transition on initial load
     this.g
       .selectAll('.bar')
       .data(SALES)
@@ -101,9 +99,12 @@ export class SalesBarChartComponent implements OnInit {
       .delay(function (d: any, i: any) {
         return i * 50;
       })
-      .attr('height', (d: any) => this.height - this.y(d.value))
+      .attr('height', (d: any) => this.height - this.y(d.value));
+
+    // append the tooltip after the bars are drawn
+    this.g
+      .selectAll('.bar')
       .append('title')
-      .attr('class', 'title tooltip')
       .text((d: any) => `${d.value} Units Sold in ${d.month}`);
   }
 }
