@@ -24,6 +24,11 @@ export class ExpensePieChartComponent implements OnInit {
   private color: any;
   private svg: any;
 
+  private hoverArc = d3
+    .arc()
+    .innerRadius(0)
+    .outerRadius(this.radius + 50);
+
   constructor() {}
 
   ngOnInit(): void {
@@ -32,24 +37,29 @@ export class ExpensePieChartComponent implements OnInit {
   }
 
   private initSvg() {
-    this.color = d3Scale.scaleOrdinal().range([
-      '#98abc5',
-      '#8a89a6',
-      '#7b6888',
-      '#6b486b',
-      '#a05d56',
-      '#d0743c',
-      // '#ff8c00',
-    ]);
-    this.arc = d3Shape.arc().outerRadius(this.radius).innerRadius(40);
+    this.color = d3Scale
+      .scaleOrdinal()
+      .range([
+        '#6d4b4b',
+        '#503f3f',
+        '#333333',
+        '#3c4e4b',
+        '#466964',
+        '#599e94',
+      ]);
+
+    this.arc = d3Shape.arc().outerRadius(this.radius).innerRadius(30);
+
     this.labelArc = d3Shape
       .arc()
       .outerRadius(this.radius - 50)
       .innerRadius(this.radius - 50);
+
     this.pie = d3Shape
       .pie()
       .sort(null)
       .value((d: any) => d.value);
+
     this.svg = d3
       .select('#expense-pie-chart')
       .append('g')
@@ -65,9 +75,11 @@ export class ExpensePieChartComponent implements OnInit {
       .enter()
       .append('g')
       .attr('class', 'arc');
+
     g.append('path')
       .attr('d', this.arc)
       .style('fill', (d: any) => this.color(d.data.expense));
+
     g.append('text')
       .attr(
         'transform',
