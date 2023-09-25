@@ -14,7 +14,7 @@ export class SalesBarChartComponent implements OnInit {
   title = 'Sales to Date:';
 
   private width: number = 750;
-  private height: number = 400;
+  private height: number = 350;
   private margin = { top: 20, right: 20, bottom: 30, left: 60 };
 
   private x: any;

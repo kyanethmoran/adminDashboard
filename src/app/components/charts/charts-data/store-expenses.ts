@@ -4,12 +4,10 @@ export interface EXPENSES {
 }
 
 export const EXPENSES: EXPENSES[] = [
-  { expense: 'Rent', value: 387 },
+  { expense: 'Rent', value: 687 },
   { expense: 'Utilities', value: 230 },
   { expense: 'Bags', value: 250 },
   { expense: 'Cleaning', value: 300 },
   { expense: 'Insurance', value: 225 },
-  //   { expense: 'Phone', value: 180 },
-  //   { expense: 'Internet', value: 120 },
   { expense: 'Misc', value: 130 },
 ];

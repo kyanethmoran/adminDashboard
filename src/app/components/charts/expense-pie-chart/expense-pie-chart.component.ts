@@ -14,8 +14,8 @@ export class ExpensePieChartComponent implements OnInit {
   title = 'Monthly Expenses:';
 
   private margin = { top: 20, right: 20, bottom: 30, left: 500 };
-  private width: number = 400;
-  private height: number = 400;
+  private width: number = 350;
+  private height: number = 350;
   private radius: number = Math.min(this.width, this.height) / 2;
 
   private arc: any;
@@ -41,11 +41,11 @@ export class ExpensePieChartComponent implements OnInit {
       '#d0743c',
       // '#ff8c00',
     ]);
-    this.arc = d3Shape.arc().outerRadius(this.radius).innerRadius(60);
+    this.arc = d3Shape.arc().outerRadius(this.radius).innerRadius(40);
     this.labelArc = d3Shape
       .arc()
-      .outerRadius(this.radius - 40)
-      .innerRadius(this.radius - 40);
+      .outerRadius(this.radius - 50)
+      .innerRadius(this.radius - 50);
     this.pie = d3Shape
       .pie()
       .sort(null)
@@ -74,7 +74,6 @@ export class ExpensePieChartComponent implements OnInit {
         (d: any) => 'translate(' + this.labelArc.centroid(d) + ')'
       )
       .attr('dy', '.35em')
-      .style('font-size', '1em')
       .style('text-anchor', 'middle')
       .attr('class', 'expense-pie-chart-label')
       .text((d: any) => d.data.expense)
