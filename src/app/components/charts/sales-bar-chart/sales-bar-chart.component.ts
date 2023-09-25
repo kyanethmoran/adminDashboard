@@ -11,10 +11,10 @@ import * as d3Axis from 'd3-axis';
   styleUrls: ['./sales-bar-chart.component.scss'],
 })
 export class SalesBarChartComponent implements OnInit {
-  title = 'Sales to Date';
+  title = 'Sales to Date:';
 
   private width: number = 750;
-  private height: number = 350;
+  private height: number = 400;
   private margin = { top: 20, right: 20, bottom: 30, left: 60 };
 
   private x: any;
@@ -32,7 +32,7 @@ export class SalesBarChartComponent implements OnInit {
   }
 
   initSvg() {
-    this.svg = d3.select('svg');
+    this.svg = d3.select('#sales-bar-chart');
 
     this.width = +this.svg.attr('width') - this.margin.left - this.margin.right;
     this.height =
