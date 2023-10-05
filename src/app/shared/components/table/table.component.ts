@@ -59,8 +59,10 @@ export class TableComponent implements OnInit {
     });
 
     _dialog.afterClosed().subscribe((result) => {
-      this.saveEntry(result);
-      this.updateTable.emit();
+      if (result != 'canceled') {
+        this.saveEntry(result);
+        this.updateTable.emit();
+      }
     });
   }
 
