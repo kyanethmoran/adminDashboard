@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -40,8 +40,6 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteEmployee(id: string) {
-    console.log('Delete Employee');
-    console.log('id', id);
     this.employees.deleteStoreEmployeeInfo('Georgia', id).subscribe(() => {
       this.getEmployeeData();
     });

@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { StoreService } from 'src/app/services/store.service';
 
@@ -72,13 +71,10 @@ export class TableComponent implements OnInit {
   saveEntry(newEmployee: any) {
     this.service
       .saveStoreEmployeeInfo('Georgia', newEmployee)
-      .subscribe((res: any) => {
-        console.log('added');
-      });
+      .subscribe((res: any) => {});
   }
 
   edit(employee: any) {
-    // this.editRow.emit(id);
     let _dialog = this.dialog.open(DialogComponent, {
       width: '50vw',
       disableClose: true,
@@ -97,11 +93,8 @@ export class TableComponent implements OnInit {
 
     _dialog.afterClosed().subscribe((result) => {
       if (result != 'canceled') {
-        // this.saveEntry(result);
-        // this.updateTable.emit();
         this.editRow.emit(result);
         this.updateTable.emit();
-        console.log('result', result);
       }
     });
   }

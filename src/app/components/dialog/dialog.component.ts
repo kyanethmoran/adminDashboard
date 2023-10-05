@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {
-  MatDialog,
   MatDialogRef,
   MatDialogModule,
   MAT_DIALOG_DATA,
@@ -9,12 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import {
-  Form,
-  FormGroup,
-  ReactiveFormsModule,
-  FormBuilder,
-} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
@@ -44,7 +38,6 @@ export class DialogComponent implements OnInit {
     this.inputData = this.data;
   }
   confirm(): void {
-    console.log('confirmed', this.inputData.formType);
     if (this.inputData.formType == 'add') {
       this.addEntry();
     }
@@ -54,12 +47,10 @@ export class DialogComponent implements OnInit {
   }
 
   addEntry(): void {
-    console.log('added entry');
     this.dialogRef.close(this.dialogForm.value);
   }
 
   editEntry(): void {
-    console.log('edited entry');
     this.dialogRef.close(this.dialogForm.value);
   }
 

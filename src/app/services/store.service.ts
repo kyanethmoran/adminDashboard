@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -24,17 +24,19 @@ export class StoreService {
     return this.http.post(url, data);
   }
 
+  //delete employee info
   deleteStoreEmployeeInfo(state: string, id: string): any {
     const url = `${this.storeInfoUrl}${state}/employees/${id}${this.jsonEXT}`;
     return this.http.delete(url);
   }
 
+  // edit employee info
   editStoreEmployeeInfo(state: string, id: string, data: any): any {
-    console.log(id, data);
     const url = `${this.storeInfoUrl}${state}/employees/${id}${this.jsonEXT}`;
     return this.http.patch(url, data);
   }
 
+  // get contractor info
   getStoreContractorInfo(state: string): any {
     const url = `${this.storeInfoUrl}${state}/contractors${this.jsonEXT}`;
     return this.http.get<Observable<any>>(url);
