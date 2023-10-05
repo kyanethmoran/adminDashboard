@@ -1,0 +1,50 @@
+<section>
+  <form [formGroup]="dialogForm" (ngSubmit)="addEntry()">
+    <h1 mat-dialog-title color="primary">{{ inputData.title }}</h1>
+
+    <div mat-dialog-content class="input-container">
+      <div class="input-subcontainer">
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input formControlName="firstName" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Choose Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="employee">Employee</mat-option>
+            <mat-option value="manager">Manager</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="input-subcontainer">
+        <mat-form-field>
+          <mat-label>Salary</mat-label>
+          <input matInput formControlName="salary" type="number" />
+        </mat-form-field>
+        <span class="spacer"></span>
+        <mat-form-field>
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phone" type="number" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" (click)="addEntry()">
+        Add
+      </button>
+      <span class="spacer"></span>
+      <button mat-raised-button [mat-dialog-close]="closeMessage" color="warn">
+        Cancel
+      </button>
+    </div>
+  </form>
+</section>

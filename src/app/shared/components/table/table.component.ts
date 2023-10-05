@@ -6,9 +6,11 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-// import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-table',
@@ -20,24 +22,17 @@ export class TableComponent implements OnInit {
   @Input() tableColumns: any;
   @Input() tableTitle: any;
   @Input() tableActions: any;
-  // @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
   @Output() deleteRow: EventEmitter<string> = new EventEmitter<string>();
+  @Output() updateTable: EventEmitter<any> = new EventEmitter<any>();
 
   dataSource: any;
 
-  constructor() {}
+  constructor(public dialog: MatDialog, private service: StoreService) {}
 
   ngOnInit() {
     this.checkTableActions();
     this.tableData = new MatTableDataSource<any>(this.tableData);
-
-    // this.tableData.paginator = this.paginator;
   }
-
-  // ngAfterViewInit() {
-  //   this.tableData.paginator = this.paginator;
-  // }
 
   checkTableActions() {
     if (this.tableActions) {
@@ -47,5 +42,33 @@ export class TableComponent implements OnInit {
 
   delete(id: string) {
     this.deleteRow.emit(id);
+  }
+
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    let _dialog = this.dialog.open(DialogComponent, {
+      width: '50vw',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      disableClose: true,
+      data: {
+        title: 'Add New Entry',
+      },
+    });
+
+    _dialog.afterClosed().subscribe((result) => {
+      this.saveEntry(result);
+      this.updateTable.emit();
+    });
+  }
+
+  saveEntry(newEmployee: any) {
+    this.service
+      .saveStoreEmployeeInfo('Georgia', newEmployee)
+      .subscribe((res: any) => {
+        console.log('added');
+      });
   }
 }
