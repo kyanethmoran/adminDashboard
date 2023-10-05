@@ -43,17 +43,33 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
     this.inputData = this.data;
   }
+  confirm(): void {
+    console.log('confirmed', this.inputData.formType);
+    if (this.inputData.formType == 'add') {
+      this.addEntry();
+    }
+    if (this.inputData.formType == 'edit') {
+      this.editEntry();
+    }
+  }
 
   addEntry(): void {
+    console.log('added entry');
+    this.dialogRef.close(this.dialogForm.value);
+  }
+
+  editEntry(): void {
+    console.log('edited entry');
     this.dialogRef.close(this.dialogForm.value);
   }
 
   dialogForm = this.builder.group({
-    firstName: this.builder.control(''),
-    lastName: this.builder.control(''),
-    email: this.builder.control(''),
-    phone: this.builder.control(''),
-    salary: this.builder.control(''),
-    role: this.builder.control(''),
+    firstName: this.builder.control(this.data.firstName ?? ''),
+    lastName: this.builder.control(this.data.lastName ?? ''),
+    email: this.builder.control(this.data.email ?? ''),
+    phone: this.builder.control(this.data.phone ?? ''),
+    salary: this.builder.control(this.data.salary ?? ''),
+    role: this.builder.control(this.data.role ?? ''),
+    id: this.builder.control(this.data.id ?? ''),
   });
 }

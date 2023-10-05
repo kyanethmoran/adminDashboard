@@ -46,11 +46,7 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let e">
           <!-- edit button -->
-          <button
-            mat-icon-button
-            color="primary"
-            (click)="openDialog('200ms', '200ms')"
-          >
+          <button mat-icon-button color="primary" (click)="edit(e)">
             <mat-icon>edit</mat-icon>
           </button>
           <!-- delete button -->

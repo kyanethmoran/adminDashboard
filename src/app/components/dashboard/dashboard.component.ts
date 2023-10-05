@@ -46,4 +46,12 @@ export class DashboardComponent implements OnInit {
       this.getEmployeeData();
     });
   }
+
+  editEmployee(employee: any) {
+    this.employees
+      .editStoreEmployeeInfo('Georgia', employee.id, employee)
+      .subscribe(() => {
+        this.getEmployeeData();
+      });
+  }
 }

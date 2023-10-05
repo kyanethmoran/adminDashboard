@@ -29,6 +29,12 @@ export class StoreService {
     return this.http.delete(url);
   }
 
+  editStoreEmployeeInfo(state: string, id: string, data: any): any {
+    console.log(id, data);
+    const url = `${this.storeInfoUrl}${state}/employees/${id}${this.jsonEXT}`;
+    return this.http.patch(url, data);
+  }
+
   getStoreContractorInfo(state: string): any {
     const url = `${this.storeInfoUrl}${state}/contractors${this.jsonEXT}`;
     return this.http.get<Observable<any>>(url);

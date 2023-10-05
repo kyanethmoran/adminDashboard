@@ -1,5 +1,5 @@
 <section>
-  <form [formGroup]="dialogForm" (ngSubmit)="addEntry()">
+  <form [formGroup]="dialogForm">
     <h1 mat-dialog-title color="primary">{{ inputData.title }}</h1>
 
     <div mat-dialog-content class="input-container">
@@ -38,8 +38,8 @@
     </div>
 
     <div mat-dialog-actions>
-      <button mat-raised-button color="primary" (click)="addEntry()">
-        Add
+      <button mat-raised-button color="primary" (click)="confirm()">
+        Confirm
       </button>
       <span class="spacer"></span>
       <button mat-raised-button [mat-dialog-close]="closeMessage" color="warn">

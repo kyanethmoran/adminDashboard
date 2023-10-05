@@ -22,8 +22,10 @@ export class TableComponent implements OnInit {
   @Input() tableColumns: any;
   @Input() tableTitle: any;
   @Input() tableActions: any;
+
   @Output() deleteRow: EventEmitter<string> = new EventEmitter<string>();
   @Output() updateTable: EventEmitter<any> = new EventEmitter<any>();
+  @Output() editRow: EventEmitter<string> = new EventEmitter<string>();
 
   dataSource: any;
 
@@ -55,6 +57,7 @@ export class TableComponent implements OnInit {
       disableClose: true,
       data: {
         title: 'Add New Entry',
+        formType: 'add',
       },
     });
 
@@ -72,5 +75,34 @@ export class TableComponent implements OnInit {
       .subscribe((res: any) => {
         console.log('added');
       });
+  }
+
+  edit(employee: any) {
+    // this.editRow.emit(id);
+    let _dialog = this.dialog.open(DialogComponent, {
+      width: '50vw',
+      disableClose: true,
+      data: {
+        title: 'Edit: ' + employee.firstName + ' ' + employee.lastName,
+        firstName: employee.firstName,
+        lastName: employee.lastName,
+        email: employee.email,
+        phone: employee.phone,
+        salary: employee.salary,
+        role: employee.role,
+        formType: 'edit',
+        id: employee.id,
+      },
+    });
+
+    _dialog.afterClosed().subscribe((result) => {
+      if (result != 'canceled') {
+        // this.saveEntry(result);
+        // this.updateTable.emit();
+        this.editRow.emit(result);
+        this.updateTable.emit();
+        console.log('result', result);
+      }
+    });
   }
 }
