@@ -8,9 +8,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent {
   @Output() toggleSideNavEvent: EventEmitter<any> = new EventEmitter();
 
+  opened = true;
+
   constructor() {}
 
   toggleSideNav() {
+    this.opened = !this.opened;
     this.toggleSideNavEvent.emit();
   }
 }
