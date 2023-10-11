@@ -16,17 +16,31 @@ export class DialogComponent implements OnInit {
 
   inputData: any;
   closeMessage: string = 'canceled';
+  dialogForm: any;
 
   ngOnInit(): void {
+    this.createForm();
     this.inputData = this.data;
   }
   confirm(newData: any): void {
-    if (this.inputData.formType == 'add') {
-      this.addEntry();
+    if (this.dialogForm.invalid) {
+      console.log('invalid');
+      console.log(this.dialogForm);
+      return;
+    } else {
+      if (this.inputData.formType == 'add') {
+        this.addEntry();
+      }
+      if (this.inputData.formType == 'edit') {
+        this.editEntry();
+      }
     }
-    if (this.inputData.formType == 'edit') {
-      this.editEntry();
-    }
+    // if (this.inputData.formType == 'add') {
+    //   this.addEntry();
+    // }
+    // if (this.inputData.formType == 'edit') {
+    //   this.editEntry();
+    // }
   }
 
   addEntry(): void {
@@ -37,19 +51,24 @@ export class DialogComponent implements OnInit {
     this.dialogRef.close(this.dialogForm.value);
   }
 
-  dialogForm = this.builder.group({
-    firstName: this.builder.control(
-      this.data.firstName ?? '',
-      Validators.required
-    ),
-    lastName: this.builder.control(
-      this.data.lastName ?? '',
-      Validators.required
-    ),
-    email: this.builder.control(this.data.email ?? '', Validators.required),
-    phone: this.builder.control(this.data.phone ?? '', Validators.required),
-    salary: this.builder.control(this.data.salary ?? '', Validators.required),
-    role: this.builder.control(this.data.role ?? '', Validators.required),
-    id: this.builder.control(this.data.id ?? '', Validators.required),
-  });
+  createForm(): void {
+    this.dialogForm = this.builder.group({
+      firstName: this.builder.control(
+        this.data.firstName ?? '',
+        Validators.required
+      ),
+      lastName: this.builder.control(
+        this.data.lastName ?? '',
+        Validators.required
+      ),
+      email: this.builder.control(this.data.email ?? '', [
+        Validators.required,
+        Validators.email,
+      ]),
+      phone: this.builder.control(this.data.phone ?? '', Validators.required),
+      salary: this.builder.control(this.data.salary ?? '', Validators.required),
+      role: this.builder.control(this.data.role ?? '', Validators.required),
+      id: this.builder.control(this.data.id ?? ''),
+    });
+  }
 }
