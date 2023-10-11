@@ -35,12 +35,6 @@ export class DialogComponent implements OnInit {
         this.editEntry();
       }
     }
-    // if (this.inputData.formType == 'add') {
-    //   this.addEntry();
-    // }
-    // if (this.inputData.formType == 'edit') {
-    //   this.editEntry();
-    // }
   }
 
   addEntry(): void {
@@ -65,7 +59,10 @@ export class DialogComponent implements OnInit {
         Validators.required,
         Validators.email,
       ]),
-      phone: this.builder.control(this.data.phone ?? '', Validators.required),
+      phone: this.builder.control(this.data.phone ?? '', [
+        Validators.required,
+        Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
+      ]),
       salary: this.builder.control(this.data.salary ?? '', Validators.required),
       role: this.builder.control(this.data.role ?? '', Validators.required),
       id: this.builder.control(this.data.id ?? ''),
