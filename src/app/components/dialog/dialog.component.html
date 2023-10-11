@@ -64,6 +64,13 @@
             "
             >Phone number is required</mat-hint
           >
+          <mat-hint
+            *ngIf="
+              dialogForm.controls.phone.hasError('pattern') &&
+              dialogForm.controls.phone.touched
+            "
+            >Enter a valid 10 digit number</mat-hint
+          >
         </mat-form-field>
         <mat-form-field>
           <mat-label>Email</mat-label>
@@ -74,6 +81,13 @@
               dialogForm.controls.email.touched
             "
             >Email is required</mat-hint
+          >
+          <mat-hint
+            *ngIf="
+              dialogForm.controls.email.hasError('email') &&
+              dialogForm.controls.email.touched
+            "
+            >Enter a valid email</mat-hint
           >
         </mat-form-field>
       </div>
