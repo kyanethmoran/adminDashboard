@@ -18,9 +18,10 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class TableComponent implements OnInit {
   @Input() tableData: any;
-  @Input() tableColumns: any;
-  @Input() tableTitle: any;
-  @Input() tableActions: any;
+  @Input() tableColumns: string[] = [];
+  @Input() tableTitle: string = '';
+  @Input() tableActions: boolean = false;
+  @Input() emailAction: boolean = false;
 
   @Output() deleteRow: EventEmitter<string> = new EventEmitter<string>();
   @Output() updateTable: EventEmitter<any> = new EventEmitter<any>();
@@ -38,6 +39,9 @@ export class TableComponent implements OnInit {
   checkTableActions() {
     if (this.tableActions) {
       this.tableColumns.push('edit');
+    }
+    if (this.emailAction) {
+      this.tableColumns.push('emailAction');
     }
   }
 
