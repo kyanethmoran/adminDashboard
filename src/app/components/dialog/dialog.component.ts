@@ -1,34 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {
-  MatDialogRef,
-  MatDialogModule,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
-  standalone: true,
-  imports: [
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-  ],
 })
 export class DialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<DialogComponent>,
-    private builder: FormBuilder // private service: StoreService
+    private builder: FormBuilder
   ) {}
 
   inputData: any;
@@ -37,7 +20,7 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
     this.inputData = this.data;
   }
-  confirm(): void {
+  confirm(newData: any): void {
     if (this.inputData.formType == 'add') {
       this.addEntry();
     }
@@ -55,12 +38,18 @@ export class DialogComponent implements OnInit {
   }
 
   dialogForm = this.builder.group({
-    firstName: this.builder.control(this.data.firstName ?? ''),
-    lastName: this.builder.control(this.data.lastName ?? ''),
-    email: this.builder.control(this.data.email ?? ''),
-    phone: this.builder.control(this.data.phone ?? ''),
-    salary: this.builder.control(this.data.salary ?? ''),
-    role: this.builder.control(this.data.role ?? ''),
-    id: this.builder.control(this.data.id ?? ''),
+    firstName: this.builder.control(
+      this.data.firstName ?? '',
+      Validators.required
+    ),
+    lastName: this.builder.control(
+      this.data.lastName ?? '',
+      Validators.required
+    ),
+    email: this.builder.control(this.data.email ?? '', Validators.required),
+    phone: this.builder.control(this.data.phone ?? '', Validators.required),
+    salary: this.builder.control(this.data.salary ?? '', Validators.required),
+    role: this.builder.control(this.data.role ?? '', Validators.required),
+    id: this.builder.control(this.data.id ?? '', Validators.required),
   });
 }
