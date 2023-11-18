@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { StoreService } from 'src/app/services/store.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -28,6 +29,7 @@ export class TableComponent implements OnInit {
   @Output() editRow: EventEmitter<string> = new EventEmitter<string>();
 
   dataSource: any;
+  employeeSubscription: Subscription = new Subscription();
 
   constructor(public dialog: MatDialog, private service: StoreService) {}
 
@@ -76,6 +78,14 @@ export class TableComponent implements OnInit {
     this.service
       .saveStoreEmployeeInfo('Georgia', newEmployee)
       .subscribe((res: any) => {});
+
+    this.employeeSubscription = this.service
+      .getStoreEmployeeInfo('Georgia')
+      .subscribe((data: any) => {
+        this.tableData = Object.keys(data).map((key) => {
+          return { ...data[key], id: key };
+        });
+      });
   }
 
   edit(employee: any) {
